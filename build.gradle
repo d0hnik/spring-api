@@ -1,0 +1,166 @@
+plugins {
+    id 'java'
+    id 'org.gretty' version '4.1.5'
+    id 'pmd'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+}
+
+def commonsVersion = '3.17.0'
+def springVersion = '6.1.13'
+def jacksonDataBindVersion = '2.17.0'
+def jacksonDataTypeVersion = '2.17.2'
+def hibernateValidatorVersion = '8.0.1.Final'
+def hsqlVersion = '2.7.3'
+def hibernateVersion = '6.6.1.Final'
+def springSecurityVersion = '6.3.4'
+def jsonWebTokenVersion = '0.12.6'
+def jacksonVersion = '2.17.0'
+def log4jVersion = '2.23.1'
+
+dependencies {
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    implementation group: 'org.apache.commons',
+            name: 'commons-lang3',
+            version: commonsVersion
+
+    compileOnly group: 'jakarta.servlet',
+            name: 'jakarta.servlet-api',
+            version: '6.1.0'
+
+    implementation group: 'org.glassfish',
+            name: 'jakarta.el',
+            version: '4.0.2'
+
+    compileOnly 'org.projectlombok:lombok:1.18.34'
+
+    annotationProcessor 'org.projectlombok:lombok:1.18.34'
+
+    implementation group: 'com.fasterxml.jackson.core',
+            name: 'jackson-databind',
+            version: jacksonDataBindVersion
+
+    implementation group: 'com.fasterxml.jackson.datatype',
+            name: 'jackson-datatype-jsr310',
+            version: jacksonDataTypeVersion
+
+    implementation group: 'org.postgresql',
+            name: 'postgresql',
+            version: '42.7.3'
+
+    implementation 'org.apache.commons:commons-dbcp2:2.12.0'
+
+    implementation group: 'org.springframework',
+            name: 'spring-context',
+            version: springVersion
+
+    implementation group: 'org.springframework',
+            name: 'spring-jdbc',
+            version: springVersion
+
+    implementation group: 'org.springframework',
+            name: 'spring-aop',
+            version: springVersion
+
+    implementation group: 'org.springframework',
+            name: 'spring-webmvc',
+            version: springVersion
+
+    implementation group: 'jakarta.validation',
+            name: 'jakarta.validation-api',
+            version: '3.1.0'
+
+    implementation group: 'org.hibernate',
+            name: 'hibernate-validator',
+            version: hibernateValidatorVersion
+
+    implementation group: 'org.springframework',
+            name: 'spring-orm',
+            version: springVersion
+
+    implementation group: 'org.hibernate',
+            name: 'hibernate-core',
+            version: hibernateVersion
+
+    implementation group: 'org.hsqldb',
+            name: 'hsqldb',
+            version: hsqlVersion
+
+    implementation group: 'org.springframework.security',
+            name: 'spring-security-web',
+            version: springSecurityVersion
+
+    implementation group: 'org.springframework.security',
+            name: 'spring-security-config',
+            version: springSecurityVersion
+
+    implementation group: 'org.springframework.security',
+            name: 'spring-security-oauth2-client',
+            version: springSecurityVersion
+
+    implementation group: 'org.springframework.security',
+            name: 'spring-security-oauth2-jose',
+            version: springSecurityVersion
+
+    testImplementation group: 'org.springframework.security',
+            name: 'spring-security-test',
+            version: springSecurityVersion
+
+    testImplementation group: 'org.springframework',
+            name: 'spring-test',
+            version: springVersion
+
+    implementation group: 'io.jsonwebtoken',
+            name: 'jjwt-api',
+            version: jsonWebTokenVersion
+
+    implementation group: 'io.jsonwebtoken',
+            name: 'jjwt-impl',
+            version: jsonWebTokenVersion
+
+    implementation group: 'io.jsonwebtoken',
+            name: 'jjwt-jackson',
+            version: jsonWebTokenVersion
+
+    implementation group: 'org.apache.logging.log4j',
+            name: 'log4j-api',
+            version: log4jVersion
+
+    implementation group: 'org.apache.logging.log4j',
+            name: 'log4j-core',
+            version: log4jVersion
+
+    implementation group: 'com.fasterxml.jackson.core',
+            name: 'jackson-databind',
+            version: jacksonVersion
+
+
+}
+
+test {
+    useJUnitPlatform()
+}
+
+gretty {
+    contextPath = '/'
+    httpPort = 8080
+}
+
+pmd {
+    consoleOutput = true
+    toolVersion = "7.5.0"
+    ruleSets = [ "E:\\Programmeerimine\\kool\\icd0011\\pmd\\ruleset.xml" ]
+}
